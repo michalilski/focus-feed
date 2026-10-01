@@ -16,7 +16,7 @@ Where the project is. Update this file after every task: change the status table
 | 7. Polish and privacy audit | `10-phase-7-polish-and-privacy-audit.md` | not started |
 | 8. Daily use and maintenance | `11-phase-8-daily-use-and-maintenance.md` | not started |
 
-**Next step:** phase 3, task 7 (live probe).
+**Next step:** phase 3, task 8 (USER: try the app with `make sim`), then task 9 (USER: plug in the phone for the first install).
 
 ## Installs
 
@@ -39,6 +39,7 @@ Things that are known not to work or not yet checked. Each line: date, what, dec
 
 ### 2026-10-01
 
+- Phase 3, task 7: `scripts/live_probe.sh`. Live YouTube probes (logged out, simulator): search — leaks 0, `shorts-nav-tab` 1, `home-nav-tab` 1, `shorts-grid-shelf` 2, Safari-shaped user agent; watch — `related-videos` 1, leaks 0; `/shorts/aaaaaaaaaaa` → `/watch?v=aaaaaaaaaaa`; `/` → consent page continuing to `feed/subscriptions`; `/feed/trending` shows the "Recommendations are off" card.
 - Phase 3, task 6: UI smoke tests for the shell. `make uitest`: 2 tests, 0 failures.
 - Phase 3, tasks 4–5: `LaunchOptions`, `SessionStore`, UI (top bar, browser screen, blocked/error views, caught-up panel, filters sheet, Safari sheet), real `RootView`. `make test`: 38 tests, 0 failures.
 - Phase 3, tasks 2–3: `ScrollLimiter`, `DialogPresenter`, `PageSnapshot`, `BrowserSession` (+ navigation delegate); `ScrollLimitTests` seen failing first. `make test`: 38 tests, 0 failures.
