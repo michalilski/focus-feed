@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body>
+<main role="main">
+  <div>
+    <article id="followed-post" data-expect="visible">
+      <a href="/friend/">friend</a>
+      <a href="/p/Cpost1/"><time datetime="2020-01-01T10:00:00.000Z">1h</time></a>
+      <div role="button">Like</div>
+    </article>
+    <article id="feed-reel" data-expect="hidden">
+      <a href="/friend/reel/Creel1/"><time datetime="2020-01-01T09:00:00.000Z">2h</time></a>
+    </article>
+    <article id="sponsored-post" data-expect="hidden">
+      <a href="https://www.facebook.com/ads/ig_redirect/?d=abc">Shop now</a>
+    </article>
+    <article id="suggested-post" data-expect="hidden">
+      <a href="/stranger/">stranger</a>
+      <div role="button">Follow</div>
+      <a href="/p/Cpost2/">post</a>
+    </article>
+    <div id="suggested-accounts" data-expect="hidden">
+      <div><a href="/explore/people/">See all</a></div>
+      <div>carousel</div>
+    </div>
+  </div>
+</main>
+<div>
+  <a id="nav-home" href="/" data-expect="visible">Home</a>
+  <a id="nav-explore" href="/explore/" data-expect="visible">Search</a>
+  <a id="nav-reels" href="/reels/" data-expect="hidden">Reels</a>
+  <a id="nav-inbox" href="/direct/inbox/" data-expect="visible">Messages</a>
+  <a id="open-app" href="instagram://user?username=friend" data-expect="hidden">Open app</a>
+</div>
+</body>
+</html>

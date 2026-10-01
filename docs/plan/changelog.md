@@ -11,12 +11,12 @@ Where the project is. Update this file after every task: change the status table
 | 2. Filter engine | `5-phase-2-filter-engine.md` | done (2026-10-01) |
 | 3. Browser shell | `6-phase-3-browser-shell.md` | done (2026-10-01) |
 | 4. YouTube on the phone | `7-phase-4-youtube.md` | in progress |
-| 5. Instagram | `8-phase-5-instagram.md` | not started |
+| 5. Instagram | `8-phase-5-instagram.md` | in progress |
 | 6. X | `9-phase-6-x.md` | not started |
 | 7. Polish and privacy audit | `10-phase-7-polish-and-privacy-audit.md` | not started |
 | 8. Daily use and maintenance | `11-phase-8-daily-use-and-maintenance.md` | not started |
 
-**Next step:** phase 4 USER checks: task 1 step 4 (still logged in after force-quit), task 2 (Safari user agent), task 4 (subscriptions, Filters numbers, snapshot), task 5 (autoplay), task 6 (acceptance checklist).
+**Next step:** phase 6, tasks without login; then one phone session for phase 4 and phase 5 checks.
 
 ## Installs
 
@@ -41,6 +41,7 @@ Things that are known not to work or not yet checked. Each line: date, what, dec
 
 ### 2026-10-01
 
+- Phase 5, tasks 1–2 (started while phase 4 waits for Michał's phone checks; no login needed): Instagram fixtures (feed, explore, profile, age cutoff) and tests, seen failing as predicted (profile test passing already), then `instagram.js`. `make test`: 46 tests, 0 failures (plan said 42; +4 from the YouTube recommendations change). Audit clean. Selectors still unverified against the logged-in site.
 - Phase 4, task 1 done by Michał (logged in on the phone; confirmed working after the app-link fix). Task 3, logged-out probes: `/@NASA` first hit YouTube's full-page consent; rejected cookies once in the simulator with a throwaway UI test (not committed), then: `channel-shorts-tab` 1, `shorts-nav-tab` 1, 0 Shorts links, leaks 0, no Shorts tab in the screenshot. `/@NASA/shorts` shows the "Shorts are off" card.
 - Phase 3 complete. Michał confirmed on the phone: Instagram loads fine, YouTube login no longer opens the YouTube app, YouTube Home and related videos show without Shorts, X videos play.
 - Change requested by Michał: YouTube keeps Home recommendations and related videos, full videos only. Removed the `/` → subscriptions redirect (the app still opens on Subscriptions) and the `home-nav-tab`, `home-feed`, `related-videos` hide rules and `related-video` leak rule; added a 6000 px Home cutoff. New `youtube-home.html` fixture; the watch fixture now expects related videos visible and Shorts inside them hidden. Tests seen failing first; `make test` 42 passed. Live probe: `/` stays on Home with the Home tab visible and Shorts tab hidden, watch page keeps related items with 0 Shorts links. Logged-out Home has no recommendations, so the feed itself is checked on the phone. Spec, decisions and phase 4 checklist updated.
