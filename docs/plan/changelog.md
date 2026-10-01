@@ -16,7 +16,7 @@ Where the project is. Update this file after every task: change the status table
 | 7. Polish and privacy audit | `10-phase-7-polish-and-privacy-audit.md` | not started |
 | 8. Daily use and maintenance | `11-phase-8-daily-use-and-maintenance.md` | not started |
 
-**Next step:** phase 3, task 6 (UI smoke tests).
+**Next step:** phase 3, task 7 (live probe).
 
 ## Installs
 
@@ -39,6 +39,7 @@ Things that are known not to work or not yet checked. Each line: date, what, dec
 
 ### 2026-10-01
 
+- Phase 3, task 6: UI smoke tests for the shell. `make uitest`: 2 tests, 0 failures.
 - Phase 3, tasks 4–5: `LaunchOptions`, `SessionStore`, UI (top bar, browser screen, blocked/error views, caught-up panel, filters sheet, Safari sheet), real `RootView`. `make test`: 38 tests, 0 failures.
 - Phase 3, tasks 2–3: `ScrollLimiter`, `DialogPresenter`, `PageSnapshot`, `BrowserSession` (+ navigation delegate); `ScrollLimitTests` seen failing first. `make test`: 38 tests, 0 failures.
 - Phase 3, task 1: `CutoffGeometry` with tests (seen failing first). `make test`: 37 tests, 0 failures.
