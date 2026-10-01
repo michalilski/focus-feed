@@ -10,13 +10,13 @@ Where the project is. Update this file after every task: change the status table
 | 1. Project and routing | `4-phase-1-project-and-routing.md` | done (2026-10-01) |
 | 2. Filter engine | `5-phase-2-filter-engine.md` | done (2026-10-01) |
 | 3. Browser shell | `6-phase-3-browser-shell.md` | done (2026-10-01) |
-| 4. YouTube on the phone | `7-phase-4-youtube.md` | in progress |
-| 5. Instagram | `8-phase-5-instagram.md` | in progress |
-| 6. X | `9-phase-6-x.md` | in progress |
-| 7. Polish and privacy audit | `10-phase-7-polish-and-privacy-audit.md` | not started |
+| 4. YouTube on the phone | `7-phase-4-youtube.md` | done (2026-10-01) |
+| 5. Instagram | `8-phase-5-instagram.md` | done (2026-10-01) |
+| 6. X | `9-phase-6-x.md` | done (2026-10-01) |
+| 7. Polish and privacy audit | `10-phase-7-polish-and-privacy-audit.md` | in progress |
 | 8. Daily use and maintenance | `11-phase-8-daily-use-and-maintenance.md` | not started |
 
-**Next step:** one phone session: phase 4 checks, phase 5 tasks 3–7 (Instagram), phase 6 tasks 3–5 (X).
+**Next step:** phase 7: privacy audit (agent), then UX review and App Privacy Report (USER).
 
 ## Installs
 
@@ -41,6 +41,7 @@ Things that are known not to work or not yet checked. Each line: date, what, dec
 
 ### 2026-10-01
 
+- Phases 4, 5 and 6 complete: Michał ran the YouTube, Instagram and X checklists on the phone, logged in, and reported that everything works. Not reported separately: Safari user agent comparison (phase 4 task 2), Filters numbers, the DM reel case (phase 5 task 6), the X floating header recheck; all covered by the overall "works" report.
 - Phase 6, tasks 1–2 (no login needed): X fixtures (home, status, explore) and tests, seen failing on the expected elements, then `x.js`. `make test`: 49 tests, 0 failures (plan said 45; +4 from the YouTube change). `make uitest` passed, audit clean. Logged-out probe of x.com/SpaceX renders as before. Selectors still unverified against the logged-in site.
 - Phase 5, tasks 1–2 (started while phase 4 waits for Michał's phone checks; no login needed): Instagram fixtures (feed, explore, profile, age cutoff) and tests, seen failing as predicted (profile test passing already), then `instagram.js`. `make test`: 46 tests, 0 failures (plan said 42; +4 from the YouTube recommendations change). Audit clean. Selectors still unverified against the logged-in site.
 - Phase 4, task 1 done by Michał (logged in on the phone; confirmed working after the app-link fix). Task 3, logged-out probes: `/@NASA` first hit YouTube's full-page consent; rejected cookies once in the simulator with a throwaway UI test (not committed), then: `channel-shorts-tab` 1, `shorts-nav-tab` 1, 0 Shorts links, leaks 0, no Shorts tab in the screenshot. `/@NASA/shorts` shows the "Shorts are off" card.
