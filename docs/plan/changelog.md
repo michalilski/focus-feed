@@ -7,7 +7,7 @@ Where the project is. Update this file after every task: change the status table
 | Phase | File | Status |
 | --- | --- | --- |
 | Plan | `1-` to `3-` | done (2026-10-01) |
-| 1. Project and routing | `4-phase-1-project-and-routing.md` | in progress |
+| 1. Project and routing | `4-phase-1-project-and-routing.md` | done (2026-10-01) |
 | 2. Filter engine | `5-phase-2-filter-engine.md` | not started |
 | 3. Browser shell | `6-phase-3-browser-shell.md` | not started |
 | 4. YouTube on the phone | `7-phase-4-youtube.md` | not started |
@@ -16,7 +16,7 @@ Where the project is. Update this file after every task: change the status table
 | 7. Polish and privacy audit | `10-phase-7-polish-and-privacy-audit.md` | not started |
 | 8. Daily use and maintenance | `11-phase-8-daily-use-and-maintenance.md` | not started |
 
-**Next step:** phase 1, task 6 (phase check: UI test, audit).
+**Next step:** phase 2, task 1.
 
 ## Installs
 
@@ -39,6 +39,7 @@ Things that are known not to work or not yet checked. Each line: date, what, dec
 
 ### 2026-10-01
 
+- Phase 1 complete: `make test` 22 tests passed, `make uitest` 1 test passed, `make audit` 8 `ok:` lines.
 - Phase 1, task 5: `RedirectGuard` with tests (seen failing first). `make test`: 22 tests, 0 failures.
 - Phase 1, tasks 2–4: router tests written and seen failing (`cannot find type 'PlatformProfile'`), then routing core (`RouteDecision`, `RouteRule`, `Router`, URL helpers) and YouTube/Instagram/X profiles. `make test`: 18 tests, 0 failures.
 - Phase 1, task 1: XcodeGen 2.46.0 installed; `.gitignore`, `project.yml`, `Makefile`, `scripts/` (test, privacy audit, icon), app entry point, asset catalog with icon, UI smoke test. `make build` succeeds, `make audit` prints only `ok:` lines.
