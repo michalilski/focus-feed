@@ -6,7 +6,11 @@ final class YouTubeFilterTests: FilterFixtureTestCase {
         try await assertFixture("youtube-search", profile: .youtube, path: "/results?search_query=swift")
     }
 
-    func testWatchPageHidesRecommendations() async throws {
+    func testWatchPageKeepsRelatedVideosButHidesShortsAndEndScreens() async throws {
         try await assertFixture("youtube-watch", profile: .youtube, path: "/watch?v=abc123")
+    }
+
+    func testHomeFeedKeepsVideosButHidesShorts() async throws {
+        try await assertFixture("youtube-home", profile: .youtube, path: "/")
     }
 }

@@ -9,9 +9,11 @@
 </div>
 <ytm-slim-video-metadata-section-renderer id="video-title" data-expect="visible">Title</ytm-slim-video-metadata-section-renderer>
 <ytm-item-section-renderer id="comments" section-identifier="comments-entry-point" data-expect="visible">Comments</ytm-item-section-renderer>
-<ytm-item-section-renderer id="related" section-identifier="related-items" data-expect="hidden">
+<ytm-item-section-renderer id="related" section-identifier="related-items" data-expect="visible">
   <lazy-list>
-    <ytm-video-with-context-renderer><a href="/watch?v=next1">Up next</a></ytm-video-with-context-renderer>
+    <ytm-video-with-context-renderer id="related-video" data-expect="visible"><a href="/watch?v=next1">Up next</a></ytm-video-with-context-renderer>
+    <ytm-video-with-context-renderer id="related-short" data-expect="hidden"><a href="/shorts/next2">A related short</a></ytm-video-with-context-renderer>
+    <ytm-reel-shelf-renderer id="related-shorts-shelf" data-expect="hidden"><a href="/shorts/next3">Short</a></ytm-reel-shelf-renderer>
   </lazy-list>
 </ytm-item-section-renderer>
 </body>

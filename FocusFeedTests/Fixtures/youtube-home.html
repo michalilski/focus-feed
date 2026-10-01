@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body>
+<div class="tab-content" tab-identifier="FEwhat_to_watch" id="home-feed" data-expect="visible">
+  <ytm-rich-grid-renderer>
+    <ytm-rich-item-renderer id="recommended-video" data-expect="visible">
+      <a href="/watch?v=rec123">A recommended video</a>
+    </ytm-rich-item-renderer>
+    <ytm-rich-item-renderer id="recommended-short" data-expect="hidden">
+      <a href="/shorts/rec456">A recommended short</a>
+    </ytm-rich-item-renderer>
+    <ytm-rich-section-renderer id="shorts-section" data-expect="hidden">
+      <ytm-reel-shelf-renderer><a href="/shorts/rec789">Short</a></ytm-reel-shelf-renderer>
+    </ytm-rich-section-renderer>
+    <ytm-rich-section-renderer id="lockup-shorts-section" data-expect="hidden">
+      <ytm-shorts-lockup-view-model><a href="/shorts/rec000">Short</a></ytm-shorts-lockup-view-model>
+    </ytm-rich-section-renderer>
+    <ytm-rich-section-renderer id="plain-section" data-expect="visible">
+      <a href="/watch?v=sec123">A section without shorts</a>
+    </ytm-rich-section-renderer>
+  </ytm-rich-grid-renderer>
+</div>
+</body>
+</html>

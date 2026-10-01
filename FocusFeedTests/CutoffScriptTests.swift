@@ -8,6 +8,12 @@ final class CutoffScriptTests: FilterFixtureTestCase {
         XCTAssertEqual(cutoff, 6000)
     }
 
+    func testDepthCutoffAppliesOnHomeFeed() async throws {
+        let webView = try await loadFixture("cutoff-depth", profile: .youtube, path: "/")
+        let cutoff = try await cutoffY(in: webView)
+        XCTAssertEqual(cutoff, 6000)
+    }
+
     func testNoCutoffOnWatchPage() async throws {
         let webView = try await loadFixture("cutoff-depth", profile: .youtube, path: "/watch?v=abc123")
         let cutoff = try await cutoffY(in: webView)

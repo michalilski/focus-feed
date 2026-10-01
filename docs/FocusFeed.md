@@ -17,7 +17,7 @@ The rule is the same on all three: keep followed content, profiles, search and m
 | Platform | Keep | Remove |
 | --- | --- | --- |
 | Instagram | Following feed (chronological), Stories of followed accounts, profiles, search, DMs, my own posting | Reels tab and in-feed Reels, Explore grid, "Suggested for you" posts and accounts, home feed defaulted to Following |
-| YouTube | Subscriptions feed, channel pages, search results, watch page for a chosen video, playlists | Shorts (shelf, tab, `/shorts/` URLs), home page recommendations, sidebar "Up next", end-screen cards, autoplay |
+| YouTube | Subscriptions feed (start page), Home recommendations (full videos only, one page), channel pages, search results, watch page for a chosen video with related videos, playlists | Shorts everywhere (shelf, tab, in Home and related lists, `/shorts/` URLs), Trending/Explore, end-screen cards, autoplay |
 | X | Following timeline, profiles, search, lists, DMs, notifications | "For you" tab (forced to Following), Explore/Trending, "Who to follow", recommended posts injected into replies |
 
 Two deliberate frictions apply everywhere: the following feed stops after a fixed number of items (e.g. last 48 hours) with a "you're caught up" screen, and search results never autoload more than one page.
@@ -67,7 +67,7 @@ Out of scope: other platforms, a settings screen, backend, accounts, sync. To ma
 Roughly four evenings of work, each step ending with something usable on the phone.
 
 1. **Shell app.** Ask Claude Code for a SwiftUI project with a `TabView` of three `WKWebView`s, a shared persistent data store, and back/forward/reload controls. Install via Xcode and log in to all three sites.
-2. **YouTube first** (easiest, most stable URLs). Redirect `/` to `/feed/subscriptions`, rewrite `/shorts/<id>` to `/watch?v=<id>`, inject CSS hiding the Shorts shelf, related videos and end screens, and disable autoplay.
+2. **YouTube first** (easiest, most stable URLs). Open on `/feed/subscriptions`, rewrite `/shorts/<id>` to `/watch?v=<id>`, inject CSS hiding Shorts everywhere and end screens, and disable autoplay. Home and related videos stay, without Shorts (changed 2026-10-01 at Michał's request).
 3. **Instagram.** Force `?variant=following` on the home feed, block `/reels/` and `/explore/` with a placeholder screen, and hide suggested blocks via a `MutationObserver` script.
 4. **X.** Select the Following tab on load, block `/explore`, hide "Who to follow" and trending modules.
 5. **Friction layer.** "Caught up" cutoff on each following feed and a debug overlay counting what was hidden.

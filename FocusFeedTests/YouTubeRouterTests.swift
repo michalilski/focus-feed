@@ -4,9 +4,9 @@ import XCTest
 final class YouTubeRouterTests: RouterTestCase {
     override var profile: PlatformProfile { .youtube }
 
-    func testHomeRedirectsToSubscriptions() {
-        assertRedirect("https://m.youtube.com/", to: "https://m.youtube.com/feed/subscriptions")
-        assertRedirect("https://www.youtube.com", to: "https://www.youtube.com/feed/subscriptions")
+    func testHomeFeedIsAllowed() {
+        assertAllowed("https://m.youtube.com/")
+        assertAllowed("https://www.youtube.com")
     }
 
     func testShortIsRewrittenToWatchPage() {

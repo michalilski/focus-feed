@@ -1,15 +1,12 @@
 FocusFeed.install({
   hide: [
     { name: "shorts-nav-tab", selector: "ytm-pivot-bar-item-renderer:has(> div.pivot-shorts)" },
-    { name: "home-nav-tab", selector: "ytm-pivot-bar-item-renderer:has(> div.pivot-w2w)" },
     { name: "shorts-shelf", selector: "ytm-reel-shelf-renderer" },
     { name: "shorts-section", selector: "ytm-rich-section-renderer:has(ytm-reel-shelf-renderer, ytm-shorts-lockup-view-model)" },
     { name: "shorts-grid-shelf", selector: "grid-shelf-view-model:has(ytm-shorts-lockup-view-model)" },
     { name: "shorts-list-item", selector: 'ytm-video-with-context-renderer:has(a[href^="/shorts"])' },
     { name: "shorts-grid-item", selector: 'ytm-rich-item-renderer:has(a[href^="/shorts"])' },
     { name: "channel-shorts-tab", selector: 'yt-tab-shape[tab-title="Shorts"]' },
-    { name: "home-feed", selector: '.tab-content[tab-identifier="FEwhat_to_watch"]' },
-    { name: "related-videos", selector: 'ytm-item-section-renderer[section-identifier="related-items"]' },
     { name: "endscreen-cards", selector: "#movie_player .ytp-ce-element" },
     { name: "endscreen-grid", selector: "#movie_player .ytp-endscreen-content" },
     { name: "endscreen-wall", selector: "#movie_player .ytp-videowall-still" },
@@ -28,9 +25,15 @@ FocusFeed.install({
   ],
   leaks: [
     { name: "shorts-link", selector: 'a[href^="/shorts"]' },
-    { name: "related-video", selector: 'ytm-item-section-renderer[section-identifier="related-items"] a[href^="/watch"]' },
   ],
   cutoff: [
+    {
+      name: "home",
+      applies: function (location) {
+        return location.pathname === "/";
+      },
+      maxDepth: 6000,
+    },
     {
       name: "search",
       applies: function (location) {

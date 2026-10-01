@@ -29,19 +29,11 @@ enum YouTubeRules {
     )
 
     static let all: [RouteRule] = [
-        RewriteRule(rewrite: homeToSubscriptions),
         RewriteRule(rewrite: shortToWatch),
         BlockPathRule(prefixes: ["/shorts", "/feed/shorts"], reason: shortsBlocked),
         BlockPatternRule(pattern: "/(@[^/]+|(c|channel|user)/[^/]+)/shorts", reason: shortsBlocked),
         BlockPathRule(prefixes: ["/feed/trending", "/feed/explore"], reason: discoveryBlocked),
     ]
-
-    private static let youtubeHosts = ["youtube.com", "www.youtube.com", "m.youtube.com"]
-
-    private static func homeToSubscriptions(_ url: URL) -> URL? {
-        guard let host = url.host(), youtubeHosts.contains(host), url.normalizedPath == "/" else { return nil }
-        return url.replacingPath("/feed/subscriptions")
-    }
 
     private static func shortToWatch(_ url: URL) -> URL? {
         guard let match = url.normalizedPath.wholeMatch(of: /\/shorts\/([A-Za-z0-9_-]+)/) else { return nil }

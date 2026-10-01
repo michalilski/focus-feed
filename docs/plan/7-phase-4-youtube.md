@@ -77,14 +77,14 @@ grep -c 'href="/shorts' snapshots/youtube.html
 If the second number is above 0 while the Filters sheet showed `shorts-link` leaking above 0, run the leak-fix loop. If Shorts links exist but leaks are 0, they are already hidden; nothing to do.
 
 - [ ] **Step 3 (USER):** Scroll the Subscriptions feed. The "That's one page" panel must appear after roughly ten screens. If that feels too long or too short, change `maxDepth: 9000` for `subscriptions` in `FocusFeed/Resources/Filters/youtube.js` (pixels; one phone screen is about 800). There is no test tied to that number.
-- [ ] **Step 4 (USER):** Tap the bottom-bar items. Expected: no Home and no Shorts button; Subscriptions and "You" work. Open History and a playlist from "You".
+- [ ] **Step 4 (USER):** Tap the bottom-bar items. Expected: no Shorts button; Home, Subscriptions and "You" work. Open History and a playlist from "You".
 
 ---
 
 ### Task 5: Autoplay (USER)
 
 - [ ] **Step 1:** Open a short video (under a minute) from a subscription and let it play to the end.
-- [ ] **Step 2:** Expected: nothing else starts. No related videos under the player, no end-screen grid, no countdown to a next video.
+- [ ] **Step 2:** Expected: nothing else starts. No end-screen grid, no countdown to a next video. Related videos under the player are fine, but none of them is a Short.
 
 If a next video starts by itself:
 
@@ -108,20 +108,21 @@ Keep — each must work:
 - [ ] Search returns results; opening a result works
 - [ ] Channel page: Videos and Playlists tabs work; subscribing and unsubscribing work
 - [ ] Like, comment, reply work
+- [ ] Home tab shows recommended full videos and stops after one page with the "Show one more page" panel
+- [ ] Related videos under a video are shown and none of them is a Short
 - [ ] Playlists and Watch Later open and play
 - [ ] A YouTube link tapped inside X or Instagram opens in the YouTube tab (retest after phases 5 and 6)
 
 Remove — each must be gone:
 
 - [ ] No Shorts shelf in Subscriptions, search, or channel pages
-- [ ] No Shorts or Home button in the bottom bar
+- [ ] No Shorts button in the bottom bar
 - [ ] Typing `youtube.com/shorts` style links: a single short opens as a normal video; no swipe-to-next
-- [ ] No home page recommendations: the YouTube logo and any "Home" link lead to Subscriptions
-- [ ] No related videos or "Up next" on the watch page
+- [ ] No Shorts in Home or in related videos
 - [ ] No end-screen suggestions when a video ends
 - [ ] No autoplay of a next video
 - [ ] Search results stop after one page with the "Show one more page" panel
-- [ ] Filters sheet shows 0 leaking on Subscriptions, search and a watch page
+- [ ] Filters sheet shows 0 leaking on Home, Subscriptions, search and a watch page
 
 ---
 
