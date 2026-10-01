@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body>
+<div id="movie_player" class="html5-video-player">
+  <div id="player-surface" data-expect="visible">video</div>
+  <div id="endscreen-card" class="ytp-ce-element" data-expect="hidden">card</div>
+  <div id="endscreen-grid" class="ytp-endscreen-content" data-expect="hidden">grid</div>
+</div>
+<ytm-slim-video-metadata-section-renderer id="video-title" data-expect="visible">Title</ytm-slim-video-metadata-section-renderer>
+<ytm-item-section-renderer id="comments" section-identifier="comments-entry-point" data-expect="visible">Comments</ytm-item-section-renderer>
+<ytm-item-section-renderer id="related" section-identifier="related-items" data-expect="hidden">
+  <lazy-list>
+    <ytm-video-with-context-renderer><a href="/watch?v=next1">Up next</a></ytm-video-with-context-renderer>
+  </lazy-list>
+</ytm-item-section-renderer>
+</body>
+</html>

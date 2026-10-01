@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body>
+<ytm-search>
+  <lazy-list>
+    <ytm-video-with-context-renderer id="normal-result" data-expect="visible">
+      <a href="/watch?v=abc123">A normal video</a>
+    </ytm-video-with-context-renderer>
+    <ytm-video-with-context-renderer id="short-result" data-expect="hidden">
+      <a href="/shorts/xyz789">A short in results</a>
+    </ytm-video-with-context-renderer>
+    <ytm-reel-shelf-renderer id="shorts-shelf" data-expect="hidden">
+      <a href="/shorts/s1">Short 1</a>
+    </ytm-reel-shelf-renderer>
+    <grid-shelf-view-model id="shorts-grid-shelf" data-expect="hidden">
+      <ytm-shorts-lockup-view-model><a href="/shorts/s2">Short 2</a></ytm-shorts-lockup-view-model>
+    </grid-shelf-view-model>
+    <grid-shelf-view-model id="plain-grid-shelf" data-expect="visible">
+      <a href="/watch?v=def456">A shelf without shorts</a>
+    </grid-shelf-view-model>
+  </lazy-list>
+</ytm-search>
+<ytm-pivot-bar-renderer>
+  <ytm-pivot-bar-item-renderer id="nav-home" data-expect="hidden"><div class="pivot-bar-item-tab pivot-w2w">Home</div></ytm-pivot-bar-item-renderer>
+  <ytm-pivot-bar-item-renderer id="nav-shorts" data-expect="hidden"><div class="pivot-bar-item-tab pivot-shorts">Shorts</div></ytm-pivot-bar-item-renderer>
+  <ytm-pivot-bar-item-renderer id="nav-subs" data-expect="visible"><div class="pivot-bar-item-tab pivot-subs">Subscriptions</div></ytm-pivot-bar-item-renderer>
+</ytm-pivot-bar-renderer>
+</body>
+</html>

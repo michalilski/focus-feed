@@ -16,7 +16,7 @@ Where the project is. Update this file after every task: change the status table
 | 7. Polish and privacy audit | `10-phase-7-polish-and-privacy-audit.md` | not started |
 | 8. Daily use and maintenance | `11-phase-8-daily-use-and-maintenance.md` | not started |
 
-**Next step:** phase 2, task 4 (fixture harness and YouTube filter tests).
+**Next step:** phase 2, task 5 (cutoff script tests).
 
 ## Installs
 
@@ -39,6 +39,7 @@ Things that are known not to work or not yet checked. Each line: date, what, dec
 
 ### 2026-10-01
 
+- Phase 2, task 4: fixture harness and YouTube search/watch fixtures. `make test`: 28 tests, 0 failures. Removing the `related-videos` rule made the watch fixture fail (`#related` visible, `related-video` leak 1); restored.
 - Phase 2, task 3: `FilterBridge`, `FilterScriptLibrary`, `WebViewFactory` (isolated content world, Safari user agent suffix, per-platform data store). `make build` succeeds.
 - Phase 2, tasks 1–2: filter engine `common.js`, YouTube script, Instagram/X placeholders; `FilterMessage` parsing with tests (seen failing first). `make test`: 26 tests, 0 failures; audit clean.
 - Phase 1 complete: `make test` 22 tests passed, `make uitest` 1 test passed, `make audit` 8 `ok:` lines.
