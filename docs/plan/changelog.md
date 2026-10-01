@@ -16,7 +16,7 @@ Where the project is. Update this file after every task: change the status table
 | 7. Polish and privacy audit | `10-phase-7-polish-and-privacy-audit.md` | not started |
 | 8. Daily use and maintenance | `11-phase-8-daily-use-and-maintenance.md` | not started |
 
-**Next step:** phase 3, task 8 (USER: try the app with `make sim`), then task 9 (USER: plug in the phone for the first install).
+**Next step:** phase 3, task 9 step 4 (USER: check the three sites load and the layout fits the Dynamic Island and home indicator), then phase 4.
 
 ## Installs
 
@@ -24,7 +24,7 @@ Free signing: each install expires 7 days after the build date.
 
 | Build date | Expires | Notes |
 | --- | --- | --- |
-| — | — | — |
+| 2026-10-01 | 2026-10-08 | First install, Release build, free Personal Team signing |
 
 ## Known gaps
 
@@ -33,12 +33,13 @@ Things that are known not to work or not yet checked. Each line: date, what, dec
 - 2026-10-01 — Instagram and X selectors are unverified against the logged-in sites. To be checked in phases 5 and 6.
 - 2026-10-01 — Google login inside the web view is unverified. Checked first thing in phase 4.
 - 2026-10-01 — Reels sent in Instagram DMs: behaviour unknown until phase 5, task 6. Agreed fallback: skip.
-- 2026-10-01 — Signing and installing on the phone, and `make pull-snapshots`, were not run while planning.
+- 2026-10-01 — `make pull-snapshots` not run yet (needs a snapshot saved on the phone).
 
 ## Log
 
 ### 2026-10-01
 
+- Phase 3, task 9: first install on the iPhone. `make audit` clean; `make device` signed and installed, but the first launch was refused (profile not trusted). After Michał trusted the developer profile, `make device` launched the app.
 - Phase 3, task 7: `scripts/live_probe.sh`. Live YouTube probes (logged out, simulator): search — leaks 0, `shorts-nav-tab` 1, `home-nav-tab` 1, `shorts-grid-shelf` 2, Safari-shaped user agent; watch — `related-videos` 1, leaks 0; `/shorts/aaaaaaaaaaa` → `/watch?v=aaaaaaaaaaa`; `/` → consent page continuing to `feed/subscriptions`; `/feed/trending` shows the "Recommendations are off" card.
 - Phase 3, task 6: UI smoke tests for the shell. `make uitest`: 2 tests, 0 failures.
 - Phase 3, tasks 4–5: `LaunchOptions`, `SessionStore`, UI (top bar, browser screen, blocked/error views, caught-up panel, filters sheet, Safari sheet), real `RootView`. `make test`: 38 tests, 0 failures.
