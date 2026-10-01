@@ -16,7 +16,7 @@ Where the project is. Update this file after every task: change the status table
 | 7. Polish and privacy audit | `10-phase-7-polish-and-privacy-audit.md` | not started |
 | 8. Daily use and maintenance | `11-phase-8-daily-use-and-maintenance.md` | not started |
 
-**Next step:** phase 1, tasks 2–4 (router tests, routing core, platform profiles).
+**Next step:** phase 1, task 5 (redirect loop guard).
 
 ## Installs
 
@@ -39,6 +39,7 @@ Things that are known not to work or not yet checked. Each line: date, what, dec
 
 ### 2026-10-01
 
+- Phase 1, tasks 2–4: router tests written and seen failing (`cannot find type 'PlatformProfile'`), then routing core (`RouteDecision`, `RouteRule`, `Router`, URL helpers) and YouTube/Instagram/X profiles. `make test`: 18 tests, 0 failures.
 - Phase 1, task 1: XcodeGen 2.46.0 installed; `.gitignore`, `project.yml`, `Makefile`, `scripts/` (test, privacy audit, icon), app entry point, asset catalog with icon, UI smoke test. `make build` succeeds, `make audit` prints only `ok:` lines.
 - Plan written in `docs/plan/`.
 - Tools checked: Xcode 26.6, iOS SDK 26.5, simulator runtime iOS 26.5, iPhone 16 Pro (iOS 26.6.1) paired with Developer Mode on, free Personal Team signing identity present. Missing: XcodeGen.
