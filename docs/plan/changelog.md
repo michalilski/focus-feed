@@ -16,7 +16,7 @@ Where the project is. Update this file after every task: change the status table
 | 7. Polish and privacy audit | `10-phase-7-polish-and-privacy-audit.md` | in progress |
 | 8. Daily use and maintenance | `11-phase-8-daily-use-and-maintenance.md` | not started |
 
-**Next step:** phase 7: privacy audit (agent), then UX review and App Privacy Report (USER).
+**Next step:** phase 7 USER: UX review list (task 1) and a day with App Privacy Report on (task 3); then phase 8.
 
 ## Installs
 
@@ -41,6 +41,7 @@ Things that are known not to work or not yet checked. Each line: date, what, dec
 
 ### 2026-10-01
 
+- Phase 7, task 2, privacy audit passed: `make audit` 8 `ok:` lines; one user script (created in `FilterScriptLibrary`, added in `WebViewFactory`); `BrowserSession` evaluates only `FocusFeed.extendCutoff()`, `document.documentElement.outerHTML` and `navigator.userAgent`; `common.js` is the only `postMessage` caller. The filter scripts only add one `<style>`, set/remove the `data-focusfeed-*` attributes, click the YouTube autoplay toggle and the X Following tab. `isInspectable` is Debug-only; no packages in `project.yml`.
 - Phases 4, 5 and 6 complete: Michał ran the YouTube, Instagram and X checklists on the phone, logged in, and reported that everything works. Not reported separately: Safari user agent comparison (phase 4 task 2), Filters numbers, the DM reel case (phase 5 task 6), the X floating header recheck; all covered by the overall "works" report.
 - Phase 6, tasks 1–2 (no login needed): X fixtures (home, status, explore) and tests, seen failing on the expected elements, then `x.js`. `make test`: 49 tests, 0 failures (plan said 45; +4 from the YouTube change). `make uitest` passed, audit clean. Logged-out probe of x.com/SpaceX renders as before. Selectors still unverified against the logged-in site.
 - Phase 5, tasks 1–2 (started while phase 4 waits for Michał's phone checks; no login needed): Instagram fixtures (feed, explore, profile, age cutoff) and tests, seen failing as predicted (profile test passing already), then `instagram.js`. `make test`: 46 tests, 0 failures (plan said 42; +4 from the YouTube recommendations change). Audit clean. Selectors still unverified against the logged-in site.
