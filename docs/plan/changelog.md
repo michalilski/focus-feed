@@ -9,14 +9,14 @@ Where the project is. Update this file after every task: change the status table
 | Plan | `1-` to `3-` | done (2026-10-01) |
 | 1. Project and routing | `4-phase-1-project-and-routing.md` | done (2026-10-01) |
 | 2. Filter engine | `5-phase-2-filter-engine.md` | done (2026-10-01) |
-| 3. Browser shell | `6-phase-3-browser-shell.md` | not started |
+| 3. Browser shell | `6-phase-3-browser-shell.md` | in progress |
 | 4. YouTube on the phone | `7-phase-4-youtube.md` | not started |
 | 5. Instagram | `8-phase-5-instagram.md` | not started |
 | 6. X | `9-phase-6-x.md` | not started |
 | 7. Polish and privacy audit | `10-phase-7-polish-and-privacy-audit.md` | not started |
 | 8. Daily use and maintenance | `11-phase-8-daily-use-and-maintenance.md` | not started |
 
-**Next step:** phase 3, task 1.
+**Next step:** phase 3, tasks 2–3 (session helpers, BrowserSession).
 
 ## Installs
 
@@ -39,6 +39,7 @@ Things that are known not to work or not yet checked. Each line: date, what, dec
 
 ### 2026-10-01
 
+- Phase 3, task 1: `CutoffGeometry` with tests (seen failing first). `make test`: 37 tests, 0 failures.
 - Phase 2 complete (task 5: cutoff script tests). `make test`: 31 tests, 0 failures; `make audit` all `ok:`.
 - Phase 2, task 4: fixture harness and YouTube search/watch fixtures. `make test`: 28 tests, 0 failures. Removing the `related-videos` rule made the watch fixture fail (`#related` visible, `related-video` leak 1); restored.
 - Phase 2, task 3: `FilterBridge`, `FilterScriptLibrary`, `WebViewFactory` (isolated content world, Safari user agent suffix, per-platform data store). `make build` succeeds.
