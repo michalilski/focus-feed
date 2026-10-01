@@ -68,7 +68,7 @@ All code in phases 1–3 and the filter scripts in phases 5–6 was built as a t
 | Age cutoff needs 3 old posts in a row | A retweet of an old post shows the old date and must not end the feed |
 | One separate cookie store per platform (`WKWebsiteDataStore(forIdentifier:)`) | Sites cannot see each other's cookies; one platform can be reset without touching the others |
 | Links to other sites open in an in-app Safari sheet; links to one of the three platforms switch to that platform's filtered tab | A YouTube link in a tweet must not open an unfiltered YouTube |
-| Media needs a tap to start on Instagram and X, not on YouTube | Kills autoplaying feed video. On YouTube you chose the video, so it may start |
+| Media needs a tap to start on Instagram, not on YouTube or X | Kills autoplaying feed video. On YouTube you chose the video, so it may start. On X the restriction stops its player from ever attaching a video source (found 2026-10-01: `readyState 0`, no `src`), so videos never load; set X's own Settings → Accessibility, display and languages → Data usage → Autoplay to "Never" instead |
 | A single reel (`/reel/<id>/`) stays viewable; the Reels feed and swipe pager are blocked | Reels sent in DMs or posted by a friend can be watched one at a time. Requested by Michał on 2026-10-01 |
 | Instagram Explore redirects to its search page and the grid is hidden | On mobile web the search box lives on the Explore page; blocking Explore would remove search |
 | Channel "Shorts" tabs on YouTube are blocked | Spec says Shorts are removed. To allow them, delete the `BlockPatternRule` line in `YouTubeProfile.swift` and the `channel-shorts-tab` hide rule |

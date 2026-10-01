@@ -10,7 +10,7 @@ extension PlatformProfile {
         rules: XRules.all,
         filterScriptName: "x",
         dataStoreID: UUID(uuidString: "7B6E0A51-0C7C-4B0E-9A53-6C1D5C0F0003")!,
-        mediaRequiresUserAction: true
+        mediaRequiresUserAction: false
     )
 }
 
