@@ -1,0 +1,5 @@
+build/
+snapshots/
+*.xcodeproj
+xcuserdata/
+.DS_Store

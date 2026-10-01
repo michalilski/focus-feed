@@ -1,0 +1,66 @@
+name: FocusFeed
+options:
+  bundleIdPrefix: com.michalilski
+  deploymentTarget:
+    iOS: "26.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    DEVELOPMENT_TEAM: N5H5R9A2K2
+    CODE_SIGN_STYLE: Automatic
+    TARGETED_DEVICE_FAMILY: "1"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  FocusFeed:
+    type: application
+    platform: iOS
+    sources:
+      - FocusFeed
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.michalilski.focusfeed
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: FocusFeed
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_NSCameraUsageDescription: "Used when you choose to take a photo or video for a post or message."
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: "Used when you choose to record video or audio for a post or message."
+        INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription: "Used when you save an image from a page."
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+  FocusFeedTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - FocusFeedTests
+    dependencies:
+      - target: FocusFeed
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.michalilski.focusfeed.tests
+  FocusFeedUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - FocusFeedUITests
+    dependencies:
+      - target: FocusFeed
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.michalilski.focusfeed.uitests
+schemes:
+  FocusFeed:
+    build:
+      targets:
+        FocusFeed: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - FocusFeedTests
+        - FocusFeedUITests
