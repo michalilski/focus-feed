@@ -16,7 +16,7 @@ Where the project is. Update this file after every task: change the status table
 | 7. Polish and privacy audit | `10-phase-7-polish-and-privacy-audit.md` | not started |
 | 8. Daily use and maintenance | `11-phase-8-daily-use-and-maintenance.md` | not started |
 
-**Next step:** phase 3, task 9 step 4 (USER: check the three sites load and the layout fits the Dynamic Island and home indicator), then phase 4.
+**Next step:** re-check the YouTube login on the phone; X video and scrolling under investigation.
 
 ## Installs
 
@@ -39,6 +39,7 @@ Things that are known not to work or not yet checked. Each line: date, what, dec
 
 ### 2026-10-01
 
+- Fix (found on the phone): after Google login, YouTube opened the YouTube app. Cause: returning plain `.allow` from `decidePolicyFor` lets WebKit hand universal links (here the cross-domain hop accounts.google.com → m.youtube.com) to the app that claims them. Allowed main-frame navigations now return `.allowWithoutTryingAppLink` (WebKit's private policy value `allow + 2`, the same one Firefox for iOS uses). New `AppLinkPolicyTests`; `make test` 40 passed, `make uitest` passed, live YouTube probe unchanged. Needs re-check on the phone.
 - Phase 3, task 9: first install on the iPhone. `make audit` clean; `make device` signed and installed, but the first launch was refused (profile not trusted). After Michał trusted the developer profile, `make device` launched the app.
 - Phase 3, task 7: `scripts/live_probe.sh`. Live YouTube probes (logged out, simulator): search — leaks 0, `shorts-nav-tab` 1, `home-nav-tab` 1, `shorts-grid-shelf` 2, Safari-shaped user agent; watch — `related-videos` 1, leaks 0; `/shorts/aaaaaaaaaaa` → `/watch?v=aaaaaaaaaaa`; `/` → consent page continuing to `feed/subscriptions`; `/feed/trending` shows the "Recommendations are off" card.
 - Phase 3, task 6: UI smoke tests for the shell. `make uitest`: 2 tests, 0 failures.

@@ -9,7 +9,7 @@ extension BrowserSession: WKNavigationDelegate {
         if let frame = navigationAction.targetFrame, !frame.isMainFrame {
             return .allow
         }
-        return handle(url, isClientSide: false) ? .allow : .cancel
+        return handle(url, isClientSide: false) ? .allowWithoutTryingAppLink : .cancel
     }
 
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
