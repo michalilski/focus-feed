@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body>
+<div data-testid="TopNavBar">
+  <nav>
+    <div role="tablist">
+      <div id="for-you-tab" data-expect="hidden"><a role="tab" aria-selected="true" href="/home">For you</a></div>
+      <div id="following-tab" data-expect="visible"><a role="tab" aria-selected="false" href="/home">Following</a></div>
+    </div>
+  </nav>
+</div>
+<div data-testid="primaryColumn">
+  <section>
+    <h1>Your Home Timeline</h1>
+    <div aria-label="Timeline: Your Home Timeline">
+      <div>
+        <div id="tweet-cell" data-testid="cellInnerDiv" data-expect="visible">
+          <article data-testid="tweet"><a href="/friend/status/1"><time datetime="2020-01-01T10:00:00.000Z">1h</time></a></article>
+        </div>
+        <div id="video-tweet-cell" data-testid="cellInnerDiv" data-expect="visible">
+          <article data-testid="tweet"><div data-testid="placementTracking"><div data-testid="videoPlayer">video</div></div></article>
+        </div>
+        <div id="promoted-cell" data-testid="cellInnerDiv" data-expect="hidden">
+          <div data-testid="placementTracking"><article data-testid="tweet">Ad</article></div>
+        </div>
+        <div id="who-to-follow-cell" data-testid="cellInnerDiv" data-expect="hidden">
+          <button data-testid="UserCell">Someone</button>
+        </div>
+        <div id="show-more-cell" data-testid="cellInnerDiv" data-expect="hidden">
+          <a href="/i/connect_people?user_id=1">Show more</a>
+        </div>
+        <div id="trend-cell" data-testid="cellInnerDiv" data-expect="hidden">
+          <div data-testid="trend">Trending</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div id="layers">
+  <nav>
+    <a id="nav-home" data-testid="AppTabBar_Home_Link" href="/home" data-expect="visible">Home</a>
+    <a id="nav-explore" href="/explore" data-expect="visible">Search</a>
+    <a id="nav-grok" href="/i/grok" data-expect="hidden">Grok</a>
+    <a id="nav-communities" href="/me/communities" data-expect="hidden">Communities</a>
+    <a id="nav-notifications" href="/notifications" data-expect="visible">Notifications</a>
+    <a id="nav-chat" href="/i/chat" data-expect="visible">Chat</a>
+  </nav>
+</div>
+</body>
+</html>

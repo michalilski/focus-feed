@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body>
+<div data-testid="primaryColumn">
+  <section>
+    <div>
+      <div id="focused-tweet" data-testid="cellInnerDiv" data-expect="visible"><article data-testid="tweet">The post</article></div>
+      <div id="reply" data-testid="cellInnerDiv" data-expect="visible"><article data-testid="tweet">A reply</article></div>
+      <div id="discover-heading" data-testid="cellInnerDiv" data-expect="hidden">
+        <div><h2 role="heading">Discover more</h2><div dir="ltr">Sourced from across X</div></div>
+      </div>
+      <div id="recommended-tweet" data-testid="cellInnerDiv" data-expect="hidden"><article data-testid="tweet">Recommended</article></div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
