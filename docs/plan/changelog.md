@@ -9,14 +9,14 @@ Where the project is. Update this file after every task: change the status table
 | Plan | `1-` to `3-` | done (2026-10-01) |
 | 1. Project and routing | `4-phase-1-project-and-routing.md` | done (2026-10-01) |
 | 2. Filter engine | `5-phase-2-filter-engine.md` | done (2026-10-01) |
-| 3. Browser shell | `6-phase-3-browser-shell.md` | in progress |
-| 4. YouTube on the phone | `7-phase-4-youtube.md` | not started |
+| 3. Browser shell | `6-phase-3-browser-shell.md` | done (2026-10-01) |
+| 4. YouTube on the phone | `7-phase-4-youtube.md` | in progress |
 | 5. Instagram | `8-phase-5-instagram.md` | not started |
 | 6. X | `9-phase-6-x.md` | not started |
 | 7. Polish and privacy audit | `10-phase-7-polish-and-privacy-audit.md` | not started |
 | 8. Daily use and maintenance | `11-phase-8-daily-use-and-maintenance.md` | not started |
 
-**Next step:** re-check on the phone: YouTube login, YouTube Home and related videos, X video; X floating header needs a description from Michał.
+**Next step:** phase 4, task 1.
 
 ## Installs
 
@@ -35,10 +35,13 @@ Things that are known not to work or not yet checked. Each line: date, what, dec
 - 2026-10-01 — Reels sent in Instagram DMs: behaviour unknown until phase 5, task 6. Agreed fallback: skip.
 - 2026-10-01 — `make pull-snapshots` not run yet (needs a snapshot saved on the phone).
 
+- 2026-10-01 — X header "floating" while scrolling (reported once on the phone, not reproducible logged out in the simulator). Not reported again after the X video fix; recheck during phase 6.
+
 ## Log
 
 ### 2026-10-01
 
+- Phase 3 complete. Michał confirmed on the phone: Instagram loads fine, YouTube login no longer opens the YouTube app, YouTube Home and related videos show without Shorts, X videos play.
 - Change requested by Michał: YouTube keeps Home recommendations and related videos, full videos only. Removed the `/` → subscriptions redirect (the app still opens on Subscriptions) and the `home-nav-tab`, `home-feed`, `related-videos` hide rules and `related-video` leak rule; added a 6000 px Home cutoff. New `youtube-home.html` fixture; the watch fixture now expects related videos visible and Shorts inside them hidden. Tests seen failing first; `make test` 42 passed. Live probe: `/` stays on Home with the Home tab visible and Shorts tab hidden, watch page keeps related items with 0 Shorts links. Logged-out Home has no recommendations, so the feed itself is checked on the phone. Spec, decisions and phase 4 checklist updated.
 - Fix (found on the phone): X videos did not load. Evidence from a temporary diagnostic test on x.com/SpaceX (logged out, simulator): with `mediaTypesRequiringUserActionForPlayback = .all` X's videos had no source and `readyState 0`; without it they had a `blob:` source and `readyState 4` and still did not autoplay. X now has `mediaRequiresUserAction: false`; autoplay is to be turned off in X's own settings instead. Decision table in `1-overview-and-architecture.md` updated. Needs re-check on the phone.
 - Fix (found on the phone): after Google login, YouTube opened the YouTube app. Cause: returning plain `.allow` from `decidePolicyFor` lets WebKit hand universal links (here the cross-domain hop accounts.google.com → m.youtube.com) to the app that claims them. Allowed main-frame navigations now return `.allowWithoutTryingAppLink` (WebKit's private policy value `allow + 2`, the same one Firefox for iOS uses). New `AppLinkPolicyTests`; `make test` 40 passed, `make uitest` passed, live YouTube probe unchanged. Needs re-check on the phone.
