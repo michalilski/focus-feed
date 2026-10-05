@@ -25,6 +25,7 @@ Free signing: each install expires 7 days after the build date.
 | Build date | Expires | Notes |
 | --- | --- | --- |
 | 2026-10-01 | 2026-10-08 | First install, Release build, free Personal Team signing |
+| 2026-10-05 | 2026-10-12 | Old filtered-browser view back after trying the unified UI (`feature/unified-news-ui`, shelved), plus the DM reel guard |
 
 ## Known gaps
 
@@ -38,6 +39,10 @@ Things that are known not to work or not yet checked. Each line: date, what, dec
 - 2026-10-01 — X header "floating" while scrolling (reported once on the phone, not reproducible logged out in the simulator). Not reported again after the X video fix; recheck during phase 6.
 
 ## Log
+
+### 2026-10-05
+
+- Michał's request: a reel opened from DMs must not scroll on to the next reel. `ReelChainGuard` (from `feature/unified-news-ui`) in `BrowserSession.handle`: a client-side move from one reel to a different one is blocked with "One reel at a time" and steps back. `make test` 55 tests, 0 failures; `make uitest` 2 tests, 0 failures; `make audit` all `ok:`. Not yet checked on the phone.
 
 ### 2026-10-01
 

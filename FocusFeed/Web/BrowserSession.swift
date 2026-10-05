@@ -25,6 +25,7 @@ final class BrowserSession: NSObject, Identifiable {
     @ObservationIgnored private let dialogs = DialogPresenter()
     @ObservationIgnored private let scrollLimiter = ScrollLimiter()
     @ObservationIgnored private var redirectGuard = RedirectGuard()
+    @ObservationIgnored private var reelGuard = ReelChainGuard()
     @ObservationIgnored private var observations: [NSKeyValueObservation] = []
     @ObservationIgnored private var hasStarted = false
 
@@ -99,7 +100,8 @@ final class BrowserSession: NSObject, Identifiable {
     }
 
     func handle(_ url: URL, isClientSide: Bool) -> Bool {
-        switch guardedDecision(for: url) {
+        let decision = reelGuard.allows(url, isClientSide: isClientSide) ? guardedDecision(for: url) : .block(ReelChainGuard.reason)
+        switch decision {
         case .allow:
             return true
         case .redirect(let target):
