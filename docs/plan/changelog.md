@@ -26,6 +26,7 @@ Free signing: each install expires 7 days after the build date.
 | --- | --- | --- |
 | 2026-10-01 | 2026-10-08 | First install, Release build, free Personal Team signing |
 | 2026-10-05 | 2026-10-12 | Old filtered-browser view back after trying the unified UI (`feature/unified-news-ui`, shelved), plus the DM reel guard |
+| 2026-10-15 | 2026-10-22 | `main` with the DM reel guard and the new sprout app icon |
 
 ## Known gaps
 
@@ -39,6 +40,13 @@ Things that are known not to work or not yet checked. Each line: date, what, dec
 - 2026-10-01 — X header "floating" while scrolling (reported once on the phone, not reproducible logged out in the simulator). Not reported again after the X video fix; recheck during phase 6.
 
 ## Log
+
+### 2026-10-15
+
+- Timer moved out of the switcher (it looked per-platform) to a `TodayLabel` line at the top: "Today · N min", visible also when the bar is hidden. Hide-bar is a chevron-down button in the bar instead of a menu item. `make test` passed, `make uitest` 5 tests passed.
+- Daily timer and hideable bar (Michał's request): `VisitClock` replaced by `DailyClock` (on-screen time today, saved in `UserDefaults`, reset at midnight; a running segment is never saved, so a killed app does not count dead time); the 15 min card now says "N minutes today". Bottom bar hides on a downward swipe or the chevron-down button beside the menu; a handle brings it back (tap or swipe up). `DailyClockTests` seen failing first; `make test` passed, `make uitest` 4 tests passed (new: hide and show the bar).
+- Design pass 2 (Michał: green and the bar looked dated): real Instagram, YouTube and X glyphs from Simple Icons 13.21.0 as template SVGs, selected one in brand colour (Instagram gradient, YouTube red, X primary); icon-only switcher with the visit minutes beside the selected logo; green accent replaced by neutral black/white; cards and buttons use neutral glass.
+- Redesign and visit timer (Michał's request): the platform switcher moved to a bottom bar with iOS 26 glass controls and the back and menu buttons beside it; blocked, load-error, caught-up and visit cards share one `CalmCard` layout; a 2 pt loading line replaces the progress view; accent colour taken from the new sprout icon (lighter in dark mode). `VisitClock` counts foreground time per visit (a break of 5 min or more starts a new one); the minutes show on the selected platform, and at 15 min a card pauses media and offers "5 more minutes". `VisitClockTests` seen failing first. `make test` passed, `make uitest` 3 tests passed (new: controls sit at the bottom). New app icon from Michał's image.
 
 ### 2026-10-05
 

@@ -42,6 +42,10 @@ final class SessionStore {
         }
     }
 
+    func pauseSelected() {
+        session(for: selected).pause()
+    }
+
     func saveSnapshot() async {
         guard let snapshot = try? await session(for: selected).snapshot() else { return }
         _ = try? PageSnapshotWriter().write(snapshot)

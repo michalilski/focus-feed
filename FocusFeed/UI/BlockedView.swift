@@ -5,17 +5,10 @@ struct BlockedView: View {
     let onDismiss: () -> Void
 
     var body: some View {
-        ContentUnavailableView {
-            Label(reason.title, systemImage: "leaf.fill")
-        } description: {
-            Text(reason.message)
-        } actions: {
-            Button("Back to what I came for", action: onDismiss)
-                .buttonStyle(.borderedProminent)
+        CalmScreen(symbol: "leaf.fill", title: reason.title, message: reason.message) {
+            CalmButton(title: "Back to what I came for", action: onDismiss)
                 .accessibilityIdentifier("dismissBlock")
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.background)
         .accessibilityIdentifier("blockedView")
     }
 }
@@ -25,15 +18,25 @@ struct LoadErrorView: View {
     let onRetry: () -> Void
 
     var body: some View {
-        ContentUnavailableView {
-            Label("Can't load the page", systemImage: "wifi.slash")
-        } description: {
-            Text(message)
-        } actions: {
-            Button("Try again", action: onRetry)
-                .buttonStyle(.borderedProminent)
+        CalmScreen(symbol: "wifi.slash", title: "Can't load the page", message: message) {
+            CalmButton(title: "Try again", action: onRetry)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.background)
+    }
+}
+
+struct TimeNudgeView: View {
+    let minutes: Int
+    let onSnooze: () -> Void
+
+    var body: some View {
+        CalmScreen(
+            symbol: "hourglass",
+            title: "\(minutes) minutes today",
+            message: "Did you find what you came for? This is a good place to stop."
+        ) {
+            CalmButton(title: "5 more minutes", action: onSnooze)
+                .accessibilityIdentifier("snoozeNudge")
+        }
+        .accessibilityIdentifier("timeNudge")
     }
 }

@@ -56,7 +56,9 @@ All code in phases 1–3 and the filter scripts in phases 5–6 was built as a t
 
 | Decision | Why |
 | --- | --- |
-| Top bar with a three-way platform switcher instead of the spec's bottom `TabView` | All three mobile sites draw their own bottom navigation bar. A system tab bar under it would stack two bars and cause mis-taps |
+| Bottom bar with a glass platform switcher, below the sites' own bottom navigation (top bar until 2026-10-15) | Requested by Michał on 2026-10-15: the switcher is easier to reach at the bottom. Floating glass controls with spacing keep it visually separate from the site's bar above it |
+| Daily timer: "Today · N min" in a slim line at the top of the screen (one total for the whole app), a calm card after 15 minutes with "5 more minutes" | Idea 4 from 2026-10-15, changed the same day at Michał's request: counted for the whole app (switching platforms does not reset it), only while the app is active (not in the background, app switcher or Control Center), saved in `UserDefaults`, reset at midnight |
+| The bottom bar can be hidden | Requested by Michał on 2026-10-15. Swipe down on the bar or tap its chevron-down button; a small handle stays at the bottom, tap or swipe up to show it again. Remembered across launches |
 | XcodeGen (`project.yml`) instead of a hand-made Xcode project | Implementers never edit `project.pbxproj`. New files are picked up by `make gen` |
 | Classic `WKWebView` in a `UIViewRepresentable`, not the new SwiftUI `WebView`/`WebPage` | Well-known API, and we need KVO on `url`, a scroll view delegate and content worlds |
 | Swift 5 language mode | Avoids strict-concurrency errors around WebKit delegates. UI classes are `@MainActor` |
@@ -80,7 +82,7 @@ All code in phases 1–3 and the filter scripts in phases 5–6 was built as a t
 ```mermaid
 flowchart TB
     subgraph app["FocusFeed app"]
-        root["RootView + TopBar<br/>platform switcher, back, menu"]
+        root["RootView + BottomBar<br/>platform switcher, back, menu, daily timer"]
         store["SessionStore<br/>one BrowserSession per platform, created on first use"]
         subgraph session["BrowserSession (one per platform)"]
             router["Router + platform rules<br/>allow / redirect / block / external"]
@@ -139,7 +141,8 @@ FocusFeed/Routing/              RouteDecision, RouteRule types, Router, Redirect
 FocusFeed/Web/                  WebViewFactory, BrowserSession (+Navigation), DialogPresenter,
                                 FilterBridge, FilterMessage, FilterScriptLibrary,
                                 ScrollLimiter, CutoffGeometry, PageSnapshot
-FocusFeed/UI/                   TopBar, BrowserScreen, WebViewContainer, BlockedView,
+FocusFeed/Usage/                DailyClock, DailyTracker
+FocusFeed/UI/                   BottomBar, CalmCard, BrowserScreen, WebViewContainer, BlockedView,
                                 CaughtUpPanel, FilterStatsView, SafariView
 FocusFeed/Resources/Filters/    common.js, youtube.js, instagram.js, x.js
 FocusFeed/Resources/Assets.xcassets
@@ -165,13 +168,14 @@ Limits to be honest about: passkeys do not work in a `WKWebView` of a non-browse
 
 ## UX rules
 
-- One slim top bar: back button, platform switcher, menu (reload, feed, forward, filters). Nothing at the bottom; the sites own the bottom.
+- One bottom bar under the site's own navigation: back button, platform switcher, menu (feed, reload, forward, filters). iOS 26 Liquid Glass controls; the keyboard does not push the bar up.
+- Every message over a page (blocked, load error, caught up, daily timer) uses the same `CalmCard` layout: symbol in a glass circle, title, one line of text, one glass button.
 - Swipe from the left edge goes back. Pull down reloads.
 - A platform is loaded the first time it is selected and then kept alive, so switching is instant and does not lose scroll position. Media in the tab you leave is paused.
 - Blocked pages show a calm full-screen card with one button. No red, no shaming.
 - The caught-up panel is glued to the cutoff position and slides in as you reach it, like a page footer.
 - The menu icon changes to a warning when a leak rule matches, so breakage is visible without opening anything.
-- System colours and materials only, so light/dark mode and the iOS 26 look come for free. Accent colour is a muted green.
+- System colours and materials only, so light/dark mode and the iOS 26 look come for free. No brand accent: the accent is near-black in light mode and near-white in dark mode. The platform switcher uses the real Instagram, YouTube and X glyphs (Simple Icons 13.21.0, template SVGs); only the selected one is in brand colour.
 
 ## Rules for implementers
 

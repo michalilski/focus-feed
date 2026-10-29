@@ -4,7 +4,6 @@ extension PlatformProfile {
     static let youtube = PlatformProfile(
         platform: .youtube,
         title: "YouTube",
-        symbolName: "play.rectangle.fill",
         homeURL: URL(string: "https://m.youtube.com/feed/subscriptions")!,
         internalHosts: [
             "youtube.com", "youtu.be", "youtube-nocookie.com",

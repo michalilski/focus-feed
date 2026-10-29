@@ -5,25 +5,18 @@ struct CaughtUpPanel: View {
     let onExtend: () -> Void
 
     var body: some View {
-        VStack(spacing: 10) {
-            Image(systemName: "checkmark.circle.fill")
-                .font(.largeTitle)
-                .foregroundStyle(.tint)
-            Text(extendable ? "That's one page" : "You're caught up")
-                .font(.headline)
-            Text(extendable ? "Refine the search, or load one more page on purpose." : "Nothing newer than this. Go do something else.")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
+        CalmCard(
+            symbol: extendable ? "magnifyingglass" : "checkmark",
+            title: extendable ? "That's one page" : "You're caught up",
+            message: extendable ? "Refine the search, or load one more page on purpose." : "Nothing newer than this. Go do something else."
+        ) {
             if extendable {
                 Button("Show one more page", action: onExtend)
-                    .buttonStyle(.bordered)
+                    .buttonStyle(.glass)
                     .accessibilityIdentifier("extendCutoff")
             }
-            Spacer(minLength: 0)
         }
-        .padding(.top, 24)
-        .padding(.horizontal, 24)
+        .padding(.top, 40)
         .frame(maxWidth: .infinity, minHeight: 2000, alignment: .top)
         .background(.background)
         .accessibilityIdentifier("caughtUpPanel")

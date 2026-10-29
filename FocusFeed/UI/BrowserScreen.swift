@@ -5,18 +5,9 @@ struct BrowserScreen: View {
 
     var body: some View {
         WebViewContainer(webView: session.webView)
-            .ignoresSafeArea(edges: .bottom)
-            .overlay(alignment: .top) { progressBar }
             .overlay(alignment: .top) { cutoffPanel }
+            .overlay(alignment: .top) { LoadingBar(isLoading: session.isLoading, progress: session.progress) }
             .overlay { overlay }
-    }
-
-    @ViewBuilder
-    private var progressBar: some View {
-        if session.isLoading {
-            ProgressView(value: session.progress)
-                .progressViewStyle(.linear)
-        }
     }
 
     @ViewBuilder
@@ -34,5 +25,23 @@ struct BrowserScreen: View {
         } else if let message = session.loadError {
             LoadErrorView(message: message, onRetry: session.reload)
         }
+    }
+}
+
+struct LoadingBar: View {
+    let isLoading: Bool
+    let progress: Double
+
+    var body: some View {
+        GeometryReader { proxy in
+            Capsule()
+                .fill(.primary.opacity(0.35))
+                .frame(width: proxy.size.width * progress)
+        }
+        .frame(height: 2)
+        .opacity(isLoading ? 1 : 0)
+        .animation(.easeOut(duration: 0.2), value: progress)
+        .animation(.easeOut(duration: 0.3), value: isLoading)
+        .allowsHitTesting(false)
     }
 }

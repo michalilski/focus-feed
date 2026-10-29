@@ -3,7 +3,6 @@ import Foundation
 struct PlatformProfile {
     let platform: Platform
     let title: String
-    let symbolName: String
     let homeURL: URL
     let internalHosts: [String]
     let rules: [RouteRule]

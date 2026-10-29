@@ -4,7 +4,6 @@ extension PlatformProfile {
     static let instagram = PlatformProfile(
         platform: .instagram,
         title: "Instagram",
-        symbolName: "camera.fill",
         homeURL: URL(string: "https://www.instagram.com/?variant=following")!,
         internalHosts: ["instagram.com", "facebook.com", "meta.com"],
         rules: InstagramRules.all,

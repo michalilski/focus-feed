@@ -4,7 +4,6 @@ extension PlatformProfile {
     static let x = PlatformProfile(
         platform: .x,
         title: "X",
-        symbolName: "bubble.left.fill",
         homeURL: URL(string: "https://x.com/home")!,
         internalHosts: ["x.com", "twitter.com"],
         rules: XRules.all,
