@@ -1295,7 +1295,7 @@ If it fails:
 
 | Message | Fix |
 | --- | --- |
-| `No Account for Team "N5H5R9A2K2"` or `No profiles for 'com.michalilski.focusfeed' were found` | USER: open Xcode → Settings → Accounts, sign in to the Apple ID again, then rerun |
+| `No Account for Team "<TEAM_ID>"` or `No profiles for 'com.michalilski.focusfeed' were found` | USER: open Xcode → Settings → Accounts, sign in to the Apple ID again, then rerun |
 | Launch fails with a message about an untrusted developer or invalid code signature | USER: on the phone, Settings → General → VPN & Device Management → trust the developer, then rerun `make device` |
 | `The device is locked` or `device is not connected` | USER: unlock the phone, check the cable |
 | `Developer Mode disabled` | USER: Settings → Privacy & Security → Developer Mode → on, restart the phone |

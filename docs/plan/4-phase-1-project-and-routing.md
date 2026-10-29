@@ -6,7 +6,7 @@
 
 **Done when:** `make test` prints `** TEST SUCCEEDED **` with 22 tests, `make uitest` passes, `make audit` prints only `ok:` lines, and everything is committed.
 
-All paths are relative to the repository root `/Users/michalilski/repos/focus-feed`.
+All paths are relative to the repository root `focus-feed`.
 
 ---
 
@@ -66,7 +66,7 @@ options:
 settings:
   base:
     SWIFT_VERSION: "5.0"
-    DEVELOPMENT_TEAM: N5H5R9A2K2
+    DEVELOPMENT_TEAM: <TEAM_ID>
     CODE_SIGN_STYLE: Automatic
     TARGETED_DEVICE_FAMILY: "1"
     MARKETING_VERSION: "1.0"
@@ -135,7 +135,7 @@ Recipe lines must start with a tab character, not spaces.
 
 ```make
 SIMULATOR ?= iPhone 17 Pro
-DEVICE ?= F6A87C3E-9C2B-503A-BD22-22008E54E524
+DEVICE ?= <DEVICE_ID>
 BUNDLE_ID = com.michalilski.focusfeed
 XCODE = xcodebuild -project FocusFeed.xcodeproj -scheme FocusFeed -derivedDataPath build
 SIM_DESTINATION = -destination 'platform=iOS Simulator,name=$(SIMULATOR)'

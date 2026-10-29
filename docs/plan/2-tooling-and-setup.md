@@ -12,7 +12,7 @@ Everything here was checked on Michał's Mac on 2026-10-01.
 | iOS SDK | 26.5 | Build | OK |
 | iOS Simulator runtime | iOS 26.5, with "iPhone 17 Pro" and others | Tests, live probe | OK |
 | iPhone | "iPhone (Michał)", iPhone 16 Pro, iOS 26.6.1, paired, Developer Mode enabled | Real use | OK. It was not connected for a debug session during the check, so the first build in phase 3 may spend a few minutes preparing the device |
-| Signing identity | "Apple Development", team "Michał Ilski (Personal Team)", team ID `N5H5R9A2K2` | Install on the phone | OK, but it is a **free** team: see "Signing" below |
+| Signing identity | "Apple Development", team "Michał Ilski (Personal Team)", team ID `<TEAM_ID>` | Install on the phone | OK, but it is a **free** team: see "Signing" below |
 | Homebrew | `/opt/homebrew/bin/brew` | Installing XcodeGen | OK |
 | XcodeGen | **missing** | Generates `FocusFeed.xcodeproj` from `project.yml` | Install in phase 1, task 1 |
 | git, gh | present | Commits | OK |
@@ -55,7 +55,7 @@ Expected: a row `iPhone (Michał) … available (paired) … iPhone 16 Pro`. If 
 
 3. After the first successful install, Wi-Fi works too as long as the phone and Mac are on the same network and the phone is unlocked. The cable is more reliable.
 
-The device identifier used by the Makefile is `F6A87C3E-9C2B-503A-BD22-22008E54E524`. If the phone is ever replaced, pass another one: `make device DEVICE=<identifier from the list above>`.
+The Makefile reads the device identifier from `Config/local.mk` (git-ignored, see `Config/local.mk.example`). To use another phone once, pass it directly: `make device DEVICE=<identifier from the list above>`.
 
 ## Commands
 

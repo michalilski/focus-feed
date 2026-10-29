@@ -1,0 +1,3 @@
+# Copy to Config/local.mk (git-ignored).
+# Device identifier from: xcrun devicectl list devices
+DEVICE = YOUR-DEVICE-IDENTIFIER

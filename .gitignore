@@ -2,4 +2,8 @@ build/
 snapshots/
 *.xcodeproj
 xcuserdata/
+DerivedData/
 .DS_Store
+.env
+Config/Local.xcconfig
+Config/local.mk
